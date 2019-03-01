@@ -1,0 +1,13 @@
+{
+  "name": "future",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "unnKoel <unnkoel@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "template/*",
+    "logic/*",
+    "ui/*"
+  ]
+}
