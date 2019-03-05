@@ -9,9 +9,7 @@ import TicTacToeChild from "pages/tic-tac-toe-child";
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={Index} />
-    <Route path="/tictactoe" component={TicTacToe}>
-      <Route path="/tictactoe/:param" component={TicTacToeChild} />
-    </Route>
+    <Route path="/tictactoe" component={TicTacToe} />
     <Route path="/500" component={ErrorPage} />
     <Route component={NotFoundPage} />
   </Switch>

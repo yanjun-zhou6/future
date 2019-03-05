@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
  * default document component
  * used to create init page template
  */
-export default class DefaultDocument extends PureComponent {
+export class DefaultDocument extends PureComponent {
   static async getInitialProps({ assets, data, renderPage }) {
     const page = await renderPage();
     return { assets, data, ...page };
@@ -45,6 +45,18 @@ export default class DefaultDocument extends PureComponent {
   }
 }
 
-export function NutPage() {}
+export function NutRoot() {
+  return <div id="root">DO_NOT_DELETE_THIS_YOU_WILL_BREAK_YOUR_APP</div>;
+}
 
-export function NutData() {}
+export function NutData({ data }) {
+  return (
+    <script
+      id="server-app-state"
+      type="application/json"
+      dangerouslySetInnerHTML={{
+        __html: serialize({ ...data })
+      }}
+    />
+  );
+}

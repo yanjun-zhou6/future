@@ -2,8 +2,8 @@ import { matchPath, StaticRouter } from "react-router-dom";
 import DefaultDocument from "./default-document";
 import Helmet from "react-helmet";
 import Nut from "./nut";
-import * as utils from './utils';
-import loadInitialProps from "./load-Init-props";
+import * as utils from "./utils";
+import loadInitialProps from "./load-initial-props";
 
 /**
  * rendering function on server
@@ -13,7 +13,15 @@ import loadInitialProps from "./load-Init-props";
  * page to html. render Document Compoent wrapping page's html to html
  * and send it to client
  */
-function render({ req, res, routes, Document, assets, customRenderer, ...rest }) {
+export async function render({
+  req,
+  res,
+  routes,
+  Document,
+  assets,
+  customRenderer,
+  ...rest
+}) {
   const Doc = Document || DefaultDocument;
   const context = {};
 
@@ -37,7 +45,9 @@ function render({ req, res, routes, Document, assets, customRenderer, ...rest })
 
   const renderPage = async (fn = modPage) => {
     // By default, we keep ReactDOMServer synchronous renderToString function
-    const defaultRenderer = (element) => ({ html: ReactDOMServer.renderToString(element) });
+    const defaultRenderer = element => ({
+      html: ReactDOMServer.renderToString(element)
+    });
     const renderer = customRenderer || defaultRenderer;
     const asyncOrSyncRender = renderer(
       <StaticRouter location={req.url} context={context}>
@@ -45,13 +55,15 @@ function render({ req, res, routes, Document, assets, customRenderer, ...rest })
       </StaticRouter>
     );
 
-    const renderedContent = utils.isPromise(asyncOrSyncRender) ? await asyncOrSyncRender : asyncOrSyncRender;
+    const renderedContent = utils.isPromise(asyncOrSyncRender)
+      ? await asyncOrSyncRender
+      : asyncOrSyncRender;
     const helmet = Helmet.renderStatic();
 
     return { helmet, ...renderedContent };
   };
 
-  const docProps = await Doc.getInitialProps({
+  const { html, ...docProps } = await Doc.getInitialProps({
     req,
     res,
     assets,
@@ -60,10 +72,14 @@ function render({ req, res, routes, Document, assets, customRenderer, ...rest })
     helmet: Helmet.renderStatic(),
     ...rest
   });
+
+  const doc = ReactDOMServer.renderToStaticMarkup(<Doc {...docProps} />);
+  return `<!doctype html>${doc.replace(
+    "DO_NOT_DELETE_THIS_YOU_WILL_BREAK_YOUR_APP",
+    html
+  )}`;
 }
 
-function modPage(Page){
-  return (...props)=><Page {...props}></Page>
+function modPage(Page) {
+  return (...props) => <Page {...props} />;
 }
-
-export default render;

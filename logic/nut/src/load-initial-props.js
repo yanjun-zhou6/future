@@ -6,7 +6,7 @@ import { matchPath } from "react-router-dom";
  * @param {*} path req path
  * @param {*} ctx the context passing to page getInitialProps function as param
  */
-function loadInitialProps(routes, path, ctx) {
+export async function loadInitialProps(routes, path, ctx) {
   const initialPropsPromises = [];
 
   const isMatchedComponent = routes.find(route => {
@@ -25,5 +25,3 @@ function loadInitialProps(routes, path, ctx) {
     initialProps: (await Promise.all(initialPropsPromises))[0]
   };
 }
-
-export default loadInitialProps;
