@@ -1,9 +1,12 @@
+import React from "react";
 import { matchPath, StaticRouter } from "react-router-dom";
-import DefaultDocument from "./default-document";
+import { DefaultDocument } from "./default-document";
+import ReactDOMServer from "react-dom/server";
 import Helmet from "react-helmet";
-import Nut from "./nut";
+import { Nut } from "./nut";
 import * as utils from "./utils";
-import loadInitialProps from "./load-initial-props";
+import { createStaticRoutes } from "./create-static-routes";
+import { loadInitialProps } from "./load-initial-props";
 
 /**
  * rendering function on server
@@ -17,21 +20,21 @@ export async function render({
   req,
   res,
   routes,
-  Document,
+  document,
   assets,
   customRenderer,
   ...rest
 }) {
-  const Doc = Document || DefaultDocument;
+  const Doc = document || DefaultDocument;
   const context = {};
-
-  const { matched, initialProps } = loadInitialProps(routes, req.url, {
+  routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
+  const { match, initialProps } = await loadInitialProps(routes, req.url, {
     req,
     res,
     ...rest
   });
 
-  if (!matched) {
+  if (!match) {
     res.status(404);
     return;
   }
@@ -63,12 +66,15 @@ export async function render({
     return { helmet, ...renderedContent };
   };
 
+  const reactRouterMatch = matchPath(req.url, match);
+
   const { html, ...docProps } = await Doc.getInitialProps({
     req,
     res,
     assets,
     renderPage,
     initialProps,
+    match: reactRouterMatch,
     helmet: Helmet.renderStatic(),
     ...rest
   });
@@ -81,5 +87,5 @@ export async function render({
 }
 
 function modPage(Page) {
-  return (...props) => <Page {...props} />;
+  return props => <Page {...props} />;
 }

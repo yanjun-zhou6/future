@@ -9,7 +9,10 @@
       "request": "launch",
       "name": "Launch App.js",
       "program": "${workspaceFolder}/template/with-nutjs/build/server.js",
-      "outFiles": ["${workspaceFolder}/template/with-nutjs/build/**"]
+      "outFiles": [
+        "${workspaceFolder}/template/with-nutjs/build/**",
+        "${workspaceFolder}/logic/nut/build/**"
+      ]
     }
   ]
 }

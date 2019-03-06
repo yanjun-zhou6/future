@@ -9,9 +9,9 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
-    "nut": "^1.0.0",
     "express": "^4.16.2",
-    "razzle": "^2.4.1",
+    "nut": "1.0.0",
+    "razzle": "^3.0.0-alpha.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",

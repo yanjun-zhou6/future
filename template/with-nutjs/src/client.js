@@ -5,10 +5,10 @@ import { ensureReady, Nut } from "nut";
 import "./client.css";
 import routes from "./routes";
 
-ensureReady().then(initialProps =>
+ensureReady(routes).then(initialProps =>
   hydrate(
     <BrowserRouter>
-      <Nut initialProps={initialProps} routes={routes} />
+      <Nut initialProps={initialProps} routes={routes} abc="asd" />
     </BrowserRouter>,
     document.getElementById("root")
   )

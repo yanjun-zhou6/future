@@ -12,9 +12,15 @@ export async function loadInitialProps(routes, path, ctx) {
   const isMatchedComponent = routes.find(route => {
     const match = matchPath(path, route);
     //if matched, judge compoent and getInitialProps is existed
-    if (match && route.Component && route.Component.getInitialProps) {
-      const Component = route.Component;
-      initialPropsPromises.push(Component.getInitialProps({ match, ...ctx }));
+    if (match && route.component && route.component.getInitialProps) {
+      const component = route.component;
+      initialPropsPromises.push(
+        component.load
+          ? component
+              .load()
+              .then(() => component.getInitialProps({ match, ...ctx }))
+          : component.getInitialProps({ match, ...ctx })
+      );
     }
 
     return !!match;

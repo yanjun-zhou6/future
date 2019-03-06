@@ -17,7 +17,7 @@
     "url": "^0.11.0"
   },
   "scripts": {
-    "start": "babel src --out-dir build -w --source-maps",
+    "start": "babel src --out-dir build -w",
     "build": "babel src --out-dir build"
   },
   "peerDependencies": {

@@ -1,7 +1,24 @@
+import { matchPath } from "react-router-dom";
+import * as utils from "./utils";
+import { createStaticRoutes } from "./create-static-routes";
+
 /**
- * This help us to get initial app state data
+ * This help us to get initial app state data,
+ * and ensure async page component is loaded before rendering
  */
-export async function ensureReady() {
+export async function ensureReady(routes, pathname) {
+  routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
+
+  await Promise.all(
+    routes.map(route => {
+      const match = matchPath(pathname || window.location.pathname, route);
+      if (match && route && route.component && route.component.load) {
+        return route.component.load();
+      }
+      return undefined;
+    })
+  );
+
   let data;
   if (typeof window !== undefined && !!document) {
     // deserialize state from 'serialize-javascript' format

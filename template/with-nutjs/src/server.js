@@ -10,7 +10,6 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get("/*", async (req, res) => {
     try {
-      console.log("req", render);
       const html = await render({
         req,
         res,
@@ -21,10 +20,10 @@ server
         // e.g a redux store...
         customThing: "thing"
       });
-      console.log("111111");
       res.send(html);
     } catch (error) {
-      res.json(error);
+      res.status(500);
+      console.log(error);
     }
   });
 

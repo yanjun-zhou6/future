@@ -1,17 +1,18 @@
 import React, { PureComponent } from "react";
+import serialize from "serialize-javascript";
 
 /**
  * default document component
  * used to create init page template
  */
 export class DefaultDocument extends PureComponent {
-  static async getInitialProps({ assets, data, renderPage }) {
+  static async getInitialProps({ assets, initialProps, renderPage }) {
     const page = await renderPage();
-    return { assets, data, ...page };
+    return { assets, initialProps, ...page };
   }
 
   render() {
-    const { helmet, assets, data } = this.props;
+    const { helmet, assets, initialProps } = this.props;
     // get attributes from React Helmet
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const bodyAttrs = helmet.bodyAttributes.toComponent();
@@ -31,8 +32,8 @@ export class DefaultDocument extends PureComponent {
           )}
         </head>
         <body {...bodyAttrs}>
-          <NutPage />
-          <NutData data={data} />
+          <NutRoot />
+          <NutData initialProps={initialProps} />
           <script
             type="text/javascript"
             src={assets.client.js}
@@ -49,13 +50,13 @@ export function NutRoot() {
   return <div id="root">DO_NOT_DELETE_THIS_YOU_WILL_BREAK_YOUR_APP</div>;
 }
 
-export function NutData({ data }) {
+export function NutData({ initialProps }) {
   return (
     <script
       id="server-app-state"
       type="application/json"
       dangerouslySetInnerHTML={{
-        __html: serialize({ ...data })
+        __html: serialize({ ...initialProps })
       }}
     />
   );
