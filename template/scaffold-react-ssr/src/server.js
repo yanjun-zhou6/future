@@ -3,7 +3,6 @@ import { render } from "nut";
 import routes from "./routes";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
-
 const server = express();
 server
   .disable("x-powered-by")
@@ -22,6 +21,7 @@ server
       });
       res.send(html);
     } catch (error) {
+      console.log(error);
       res.json(error);
     }
   });

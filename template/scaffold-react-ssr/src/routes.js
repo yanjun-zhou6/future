@@ -4,9 +4,8 @@ import NotFoundPage from "pages/404";
 import ErrorPage from "pages/500";
 import Index from "pages/Index";
 import TicTacToe from "pages/tic-tac-toe";
-import TicTacToeChild from "pages/tic-tac-toe-child";
 
-const Routes = () => (
+export default (
   <Switch>
     <Route path="/" exact component={Index} />
     <Route path="/tictactoe" component={TicTacToe} />
@@ -14,5 +13,3 @@ const Routes = () => (
     <Route component={NotFoundPage} />
   </Switch>
 );
-
-export default Routes;
