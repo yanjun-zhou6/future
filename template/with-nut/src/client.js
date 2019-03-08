@@ -2,13 +2,13 @@ import React from "react";
 import { hydrate } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { ensureReady, Nut } from "nut";
-import "./client.css";
 import routes from "./routes";
+import "./client.css";
 
 ensureReady(routes).then(initialProps =>
   hydrate(
     <BrowserRouter>
-      <Nut initialProps={initialProps} routes={routes} abc="asd" />
+      <Nut initialProps={initialProps} routes={routes} />
     </BrowserRouter>,
     document.getElementById("root")
   )

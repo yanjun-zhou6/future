@@ -1,14 +1,20 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import NotFoundPage from "pages/404";
+import { asyncLoad } from "nut";
 import ErrorPage from "pages/500";
-import Index from "pages/Index";
-import TicTacToe from "pages/tic-tac-toe";
+import NotFoundPage from "pages/404";
+import Home from "pages/home";
 
 export default (
   <Switch>
-    <Route path="/" exact component={Index} />
-    <Route path="/tictactoe" component={TicTacToe} />
+    <Route path="/" exact component={Home} />
+    <Route
+      path="/tictactoe"
+      component={asyncLoad({
+        loader: () => import("pages/tic-tac-toe"),
+        placeholder: () => <p>加载中...</p>
+      })}
+    />
     <Route path="/500" component={ErrorPage} />
     <Route component={NotFoundPage} />
   </Switch>

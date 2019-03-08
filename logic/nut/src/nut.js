@@ -19,9 +19,6 @@ class NutPartial extends PureComponent {
       initialProps: props.initialProps,
       previousLocation: null
     };
-    this.routes = utils.isJSX(props.routes)
-      ? createStaticRoutes(props.routes)
-      : props.routes;
   }
 
   // only runs client
@@ -35,7 +32,7 @@ class NutPartial extends PureComponent {
         initialProps: undefined
       });
 
-      const {
+      let {
         initialProps,
         match,
         routes,
@@ -45,7 +42,9 @@ class NutPartial extends PureComponent {
         ...rest
       } = nextProps;
 
-      loadInitialProps(this.routes, location.pathname, {
+      routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
+
+      loadInitialProps(routes, location.pathname, {
         location: nextProps.location,
         history: nextProps.history,
         ...rest
@@ -62,10 +61,11 @@ class NutPartial extends PureComponent {
 
   render() {
     const { previousLocation, initialProps } = this.state;
-    const { location } = this.props;
+    let { location, routes } = this.props;
+    routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
     return (
       <Switch>
-        {this.routes.map((route, i) => (
+        {routes.map((route, i) => (
           <Route
             key={`route--${i}`}
             path={route.path}

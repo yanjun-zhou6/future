@@ -10,7 +10,7 @@ export const history = new createBrowserHistory();
 ensureReady(routes).then(initialProps =>
   hydrate(
     <Router history={history}>
-      <Nut initialProps={initialProps} routes={routes} abc="asd" />
+      <Nut initialProps={initialProps} routes={routes} />
     </Router>,
     document.getElementById("root")
   )
