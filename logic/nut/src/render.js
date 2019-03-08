@@ -5,7 +5,6 @@ import ReactDOMServer from "react-dom/server";
 import Helmet from "react-helmet";
 import { Nut } from "./nut";
 import * as utils from "./utils";
-import { createStaticRoutes } from "./create-static-routes";
 import { loadInitialProps } from "./load-initial-props";
 
 /**
@@ -27,7 +26,6 @@ export async function render({
 }) {
   const Doc = document || DefaultDocument;
   const context = {};
-  routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
   const { match, initialProps } = await loadInitialProps(routes, req.url, {
     req,
     res,

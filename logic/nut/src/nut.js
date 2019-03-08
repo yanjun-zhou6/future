@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { loadInitialProps } from "./load-initial-props";
-import { createStaticRoutes } from "./create-static-routes";
 import * as utils from "./utils";
 
 /**
@@ -42,9 +41,7 @@ class NutPartial extends PureComponent {
         ...rest
       } = nextProps;
 
-      routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
-
-      loadInitialProps(routes, location.pathname, {
+      loadInitialProps(this.props.routes, location.pathname, {
         location: nextProps.location,
         history: nextProps.history,
         ...rest
@@ -62,7 +59,6 @@ class NutPartial extends PureComponent {
   render() {
     const { previousLocation, initialProps } = this.state;
     let { location, routes } = this.props;
-    routes = utils.isJSX(routes) ? createStaticRoutes(routes) : routes;
     return (
       <Switch>
         {routes.map((route, i) => (

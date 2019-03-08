@@ -40,6 +40,7 @@ export class DefaultDocument extends PureComponent {
             defer
             crossOrigin="anonymous"
           />
+          {helmet.script.toComponent()}
         </body>
       </html>
     );
