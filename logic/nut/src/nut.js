@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { loadInitialProps } from "./load-initial-props";
-import * as utils from "./utils";
 
 /**
  * Find page component based url path,

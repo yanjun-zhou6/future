@@ -1,5 +1,4 @@
 import { matchPath } from "react-router-dom";
-import * as utils from "./utils";
 
 /**
  * This help us to get initial app state data,
