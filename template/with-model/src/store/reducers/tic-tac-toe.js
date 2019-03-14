@@ -30,6 +30,10 @@ export default Model.getInstance(
     };
 
     reducers = {
+      initHistory(state, { payload: history }) {
+        return { ...state, history };
+      },
+
       handleClick(state, { payload: index }) {
         const history = state.history.slice(0, state.stepNumber + 1);
         const current = history[history.length - 1];

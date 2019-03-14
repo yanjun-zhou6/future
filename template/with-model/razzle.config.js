@@ -1,8 +1,6 @@
 const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SpritesmithPlugin = require("webpack-spritesmith");
-const pxToViewport = require("postcss-px-to-viewport");
-const aspectRatio = require("postcss-aspect-ratio-mini");
 const fs = require("fs");
 const path = require("path");
 const paths = require("./config/paths");
@@ -23,23 +21,7 @@ module.exports = {
             ],
             flexbox: "no-2009"
           }
-        ),
-        pxToViewport({
-          viewportWidth: 750,
-          viewportHeight: 1334,
-          unitPrecision: 5,
-          viewportUnit: "vw",
-          selectorBlackList: [], // 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名。
-          minPixelValue: 1,
-          mediaQuery: false
-        }),
-        aspectRatio(),
-        require("postcss-write-svg")({
-          /* options */
-        }),
-        require("postcss-viewport-units")({
-          /* options */
-        })
+        )
       ]
     };
 
@@ -200,6 +182,5 @@ module.exports = {
       );
     }
     return config;
-  },
-  host: "localhost"
+  }
 };
