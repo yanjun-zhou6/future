@@ -10,5 +10,8 @@
     "template/*",
     "logic/*",
     "ui/*"
-  ]
+  ],
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  }
 }

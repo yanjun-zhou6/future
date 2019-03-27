@@ -1,0 +1,27 @@
+{
+  "npmClient": "npm",
+  "version": "independent",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "message": "chore(release): publish",
+      "noPush": true,
+      "noGitTagVersion": true,
+      "allowBranch": ["test", "master"]
+    }
+  },
+  "ignoreChanges": [
+    "**/*.map",
+    "**/.gitignore",
+    "**/LICENSE",
+    "**/.babelrc",
+    "**/.taskfile.js",
+    "**/.postcss.config.js",
+    "**/webpack.*",
+    "**/.editorconfig",
+    "**/.storybook/**",
+    "**/docs/**",
+    "**/scripts/**"
+  ],
+  "packages": ["logic/*", "ui/*"]
+}
