@@ -1,5 +1,5 @@
 import express from "express";
-import { render } from "nut";
+import { render } from "@geetemp/nut";
 import routes from "./routes";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);

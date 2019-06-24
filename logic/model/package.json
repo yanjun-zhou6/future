@@ -1,0 +1,19 @@
+{
+  "name": "@geetemp/model",
+  "version": "1.0.0",
+  "description": "redux model abstract",
+  "main": "build/index.js",
+  "author": "common",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel src --out-dir build -w",
+    "build": "rm -rf build && babel src --out-dir build --source-maps"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.4.3"
+  }
+}

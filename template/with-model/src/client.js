@@ -1,13 +1,13 @@
 import React from "react";
 import { hydrate } from "react-dom";
-import { ensureReady, Nut } from "nut";
+import { ensureReady, Nut } from "@geetemp/nut";
 import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
-import createBrowserHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import routes from "./routes";
-import configureStore from "./configureStore";
+import createStore from "./create-store";
 
-const store = configureStore.createStore(
+const store = createStore(
   eval(`(${document.getElementById("server-store-state").textContent})`)
 );
 

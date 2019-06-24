@@ -1,13 +1,13 @@
-import React from 'react';
-import {hydrate} from 'react-dom';
-import {ensureReady, Nut} from 'nut';
-import routes from './routes';
-import createBrowserHistory from 'history/createBrowserHistory';
-import {Router} from 'react-router-dom';
+import React from "react";
+import { hydrate } from "react-dom";
+import { ensureReady, Nut } from "@geetemp/nut";
+import routes from "./routes";
+import createBrowserHistory from "history/createBrowserHistory";
+import { Router } from "react-router-dom";
 
-const history = new createBrowserHistory ();
+const history = new createBrowserHistory();
 
-function Root({initialProps}) {
+function Root({ initialProps }) {
   return (
     <Router history={history}>
       <Nut initialProps={initialProps} routes={routes} />
@@ -15,13 +15,10 @@ function Root({initialProps}) {
   );
 }
 
-ensureReady (routes).then (initialProps =>
-  hydrate (
-    <Root initialProps={initialProps} />,
-    document.getElementById ('root')
-  )
+ensureReady(routes).then(initialProps =>
+  hydrate(<Root initialProps={initialProps} />, document.getElementById("root"))
 );
 
 if (module.hot) {
-  module.hot.accept ();
+  module.hot.accept();
 }

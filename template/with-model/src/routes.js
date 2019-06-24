@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { createStaticRoutes, asyncLoad } from "nut";
+import { createStaticRoutes, asyncLoad } from "@geetemp/nut";
 import ErrorPage from "pages/500";
 import NotFoundPage from "pages/404";
 import Home from "pages/home";

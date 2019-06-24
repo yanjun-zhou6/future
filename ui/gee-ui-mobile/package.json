@@ -1,6 +1,6 @@
 {
-  "name": "gee-ui-mobile",
-  "version": "1.0.0",
+  "name": "@geetemp/gee-ui-mobile",
+  "version": "1.0.5",
   "description": "A UI component library for geetemp based antd mobile.",
   "main": "dist/index.js",
   "module": "lib/index.js",
@@ -132,5 +132,13 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "3d52a2838a2e5af0732c18f1d88f3ce3850a04ec"
 }

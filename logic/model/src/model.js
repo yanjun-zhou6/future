@@ -3,7 +3,7 @@
  */
 const asyncActionFactry = Symbol("asyncActionFactry");
 
-export default class Model {
+export class Model {
   static getInstance = function(clazz) {
     const instance = new clazz();
     instance.createActions();

@@ -11,6 +11,10 @@
     "logic/*",
     "ui/*"
   ],
+  "scripts": {
+    "start:gt-mobile": "tasks/start-gt-mobile.sh",
+    "publish:gt-mobile": "tasks/publish-gt-mobile.sh"
+  },
   "devDependencies": {
     "lerna": "^3.13.1"
   }

@@ -7,8 +7,8 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch App.js",
-      "program": "${workspaceFolder}/template/with-nutjs/build/server.js",
+      "name": "with-nutjs test",
+      "program": "${workspaceFolder}/template/with-nut/build/server.js",
       "outFiles": [
         "${workspaceFolder}/template/with-nutjs/build/**",
         "${workspaceFolder}/logic/nut/build/**"

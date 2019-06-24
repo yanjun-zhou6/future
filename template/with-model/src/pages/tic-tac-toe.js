@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Board from "components/board";
 import { connect } from "react-redux";
-import ticTacToeModel from "store/reducers/tic-tac-toe";
+import ticTacToeModel from "models/tic-tac-toe";
 import "./tic-tac-toe.scss";
 
 @connect(

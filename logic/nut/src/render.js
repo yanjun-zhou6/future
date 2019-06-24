@@ -26,7 +26,7 @@ export async function render({
 }) {
   const Doc = document || DefaultDocument;
   const context = {};
-  const { match, initialProps } = await loadInitialProps(routes, req.url, {
+  const { match, initialProps } = await loadInitialProps(routes, req.path, {
     req,
     res,
     ...rest
