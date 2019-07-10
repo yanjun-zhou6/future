@@ -1,0 +1,18 @@
+{
+  "presets": ["react-app"],
+  "plugins": [
+    "transform-decorators-legacy",
+    [
+      "import",
+      {
+        "libraryName": "@geetemp/gee-ui-mobile",
+        "camel2DashComponentName": true
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}

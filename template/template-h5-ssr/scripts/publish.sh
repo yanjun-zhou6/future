@@ -1,7 +1,5 @@
-#!/bin/bash
-
 # Start in tasks/ even if run from root directory
-cd "$(dirname "$0")"
+cd "$(dirname "..")"
 
 # Exit the script on any command with non 0 return code
 # We assume that all the commands in the pipeline set their return code
@@ -11,18 +9,16 @@ set -e
 # Echo every command being executed
 set -x
 
-# Go to root
-cd ..
+# install package dependences
+if [[ -e "yarn.lock" ]]; then
+  yarn install --frozen-lockfile
+else
+  yarn install
+fi
 
 # Compile
-cd logic/nut/
-yarn build
-cd ../..
-
-cd ui/gee-ui-mobile
 yarn build
 
-cd ../..
-
-# Go!
-./node_modules/.bin/lerna publish "$@"
+# move package.json & yarn.lock to build directory
+cp package.json build
+cp yarn.lock build

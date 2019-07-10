@@ -1,0 +1,27 @@
+.top-nav-bar {
+  width: 750px;
+  height: 100px;
+  border-bottom: 1px solid #e5e5e5;
+  & > .am-navbar-left {
+    padding-left: 23px;
+    .am-navbar-left {
+      padding-left: 0;
+    }
+  }
+
+  .nav-left-icon {
+    font-size: 40px;
+    color: #333333;
+  }
+
+  .lefter-click {
+
+  }
+  
+  .right-extra {
+    position: absolute;
+    right: 24px;
+    font-size: 30px;
+    line-height: 1;
+  }
+}

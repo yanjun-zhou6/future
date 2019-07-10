@@ -1,0 +1,70 @@
+/* @styled-jsx=global */
+
+@import "normalize.scss";
+@import "variable.scss";
+@import "icons.scss";
+
+body {
+  font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB",
+    "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #333;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.clear {
+  zoom: 1;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+//checkout 选中的选择是#38ae9 统一覆盖了
+.am-checkbox.am-checkbox-checked .am-checkbox-inner {
+  background: #38a4e9;
+  border-color: #38a4e9;
+}
+
+.no-data-view {
+  margin-top: 200px;
+  color: #b3b3b3;
+  font-size: 28px;
+}
+
+// img
+.img-container {  
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+#newBridge {
+  display: none !important;
+}
