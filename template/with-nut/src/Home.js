@@ -1,15 +1,24 @@
-import React, { Component } from "react";
-import logo from "./react.svg";
-import { Link } from "react-router-dom";
-import "./Home.css";
+import React, {Component} from 'react';
+import logo from './react.svg';
+import {Link} from 'react-router-dom';
+import {Loadable} from '@geetemp/nut';
+import Loading from './Loading';
+import './Home.css';
+
+const LoadableExample = Loadable ({
+  loader: () => import ('./Example'),
+  loading: Loading,
+  modules: ['./Example'],
+  webpack: () => [require.resolveWeak ('./Example')],
+});
 
 class Home extends Component {
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    return { whatever: "stuff" };
-  }
+  // static async getInitialProps({req, res, match, history, location, ...ctx}) {
+  //   return {whatever: 'stuff'};
+  // }
 
-  render() {
-    const { whatever } = this.props;
+  render () {
+    const {whatever} = this.props;
     return (
       <div className="Home">
         <div className="Home-header">
@@ -17,9 +26,10 @@ class Home extends Component {
           <h2>Welcome to Nut</h2>
         </div>
         <p className="Home-intro">
-          To get started, edit <code>src/Home.js</code> or{" "}
+          To get started, edit <code>src/Home.js</code> or{' '}
           <code>src/About.js</code>and save to reload.
         </p>
+        <LoadableExample />
         <p>{whatever}</p>
         <Link to="/about">About -></Link>
       </div>

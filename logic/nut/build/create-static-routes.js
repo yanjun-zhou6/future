@@ -21,7 +21,7 @@ function createStaticRoutes(routesConfig) {
     for (var _iterator = children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var child = _step.value;
       var props = child.props;
-      var cloneProps = (0, _objectSpread2.default)({}, props);
+      var cloneProps = (0, _objectSpread2["default"])({}, props);
 
       if (!props.children) {
         routes.push(cloneProps);
@@ -37,8 +37,8 @@ function createStaticRoutes(routesConfig) {
     _iteratorError = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion && _iterator.return != null) {
-        _iterator.return();
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
       }
     } finally {
       if (_didIteratorError) {

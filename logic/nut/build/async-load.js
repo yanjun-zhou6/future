@@ -37,24 +37,24 @@ function asyncLoad(_ref) {
   return _temp =
   /*#__PURE__*/
   function (_PureComponent) {
-    (0, _inherits2.default)(AsyncComponent, _PureComponent);
+    (0, _inherits2["default"])(AsyncComponent, _PureComponent);
 
     function AsyncComponent() {
       var _getPrototypeOf2;
 
       var _this;
 
-      (0, _classCallCheck2.default)(this, AsyncComponent);
+      (0, _classCallCheck2["default"])(this, AsyncComponent);
 
       for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }
 
-      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(AsyncComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
-      (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "state", {
+      _this = (0, _possibleConstructorReturn2["default"])(this, (_getPrototypeOf2 = (0, _getPrototypeOf3["default"])(AsyncComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+      (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "state", {
         Component: null
       });
-      (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "updateState", function () {
+      (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "updateState", function () {
         if (_this.state.Component !== Component) {
           _this.setState({
             Component: Component
@@ -64,7 +64,7 @@ function asyncLoad(_ref) {
       return _this;
     }
 
-    (0, _createClass2.default)(AsyncComponent, [{
+    (0, _createClass2["default"])(AsyncComponent, [{
       key: "componentWillMount",
       value: function componentWillMount() {
         AsyncComponent.load().then(this.updateState);
@@ -75,11 +75,11 @@ function asyncLoad(_ref) {
         var ComponentFromState = this.state.Component;
 
         if (ComponentFromState) {
-          return _react.default.createElement(ComponentFromState, this.props);
+          return _react["default"].createElement(ComponentFromState, this.props);
         }
 
         if (Placeholder) {
-          return _react.default.createElement(Placeholder, this.props);
+          return _react["default"].createElement(Placeholder, this.props);
         }
 
         return null;
@@ -95,7 +95,7 @@ function asyncLoad(_ref) {
       key: "load",
       value: function load() {
         return loader().then(function (ResolvedComponent) {
-          Component = ResolvedComponent.default || ResolvedComponent;
+          Component = ResolvedComponent["default"] || ResolvedComponent;
         });
       }
     }]);

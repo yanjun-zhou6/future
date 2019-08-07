@@ -4,18 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _defaultDocument = require("./default-document");
-
-Object.keys(_defaultDocument).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _defaultDocument[key];
-    }
-  });
-});
-
 var _nut = require("./nut");
 
 Object.keys(_nut).forEach(function (key) {
@@ -24,18 +12,6 @@ Object.keys(_nut).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _nut[key];
-    }
-  });
-});
-
-var _render = require("./render");
-
-Object.keys(_render).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _render[key];
     }
   });
 });
@@ -72,6 +48,18 @@ Object.keys(_createStaticRoutes).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _createStaticRoutes[key];
+    }
+  });
+});
+
+var _loadable = require("./loadable");
+
+Object.keys(_loadable).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _loadable[key];
     }
   });
 });

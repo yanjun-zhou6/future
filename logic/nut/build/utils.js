@@ -19,7 +19,7 @@ var isFunction = function isFunction(obj) {
 exports.isFunction = isFunction;
 
 var isObject = function isObject(obj) {
-  return obj !== null && (0, _typeof2.default)(obj) === "object";
+  return obj !== null && (0, _typeof2["default"])(obj) === "object";
 };
 /**
  * is value a promise object

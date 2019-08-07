@@ -40,13 +40,13 @@ var _loadInitialProps = require("./load-initial-props");
 var NutPartial =
 /*#__PURE__*/
 function (_PureComponent) {
-  (0, _inherits2.default)(NutPartial, _PureComponent);
+  (0, _inherits2["default"])(NutPartial, _PureComponent);
 
   function NutPartial(props) {
     var _this;
 
-    (0, _classCallCheck2.default)(this, NutPartial);
-    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(NutPartial).call(this, props));
+    (0, _classCallCheck2["default"])(this, NutPartial);
+    _this = (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(NutPartial).call(this, props));
     _this.state = {
       initialProps: props.initialProps,
       previousLocation: null
@@ -55,7 +55,7 @@ function (_PureComponent) {
   } // only runs client
 
 
-  (0, _createClass2.default)(NutPartial, [{
+  (0, _createClass2["default"])(NutPartial, [{
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       var _this2 = this;
@@ -75,8 +75,8 @@ function (_PureComponent) {
             history = nextProps.history,
             location = nextProps.location,
             staticContext = nextProps.staticContext,
-            rest = (0, _objectWithoutProperties2.default)(nextProps, ["initialProps", "match", "routes", "history", "location", "staticContext"]);
-        (0, _loadInitialProps.loadInitialProps)(this.props.routes, location.pathname, (0, _objectSpread2.default)({
+            rest = (0, _objectWithoutProperties2["default"])(nextProps, ["initialProps", "match", "routes", "history", "location", "staticContext"]);
+        (0, _loadInitialProps.loadInitialProps)(this.props.routes, location.pathname, (0, _objectSpread2["default"])({
           location: nextProps.location,
           history: nextProps.history
         }, rest)).then(function (_ref) {
@@ -86,7 +86,10 @@ function (_PureComponent) {
             previousLocation: null,
             initialProps: initialProps
           });
-        }).catch(function (e) {});
+        })["catch"](function (e) {
+          // @todo we should more cleverly handle errors
+          console.log(e);
+        });
       }
     }
   }, {
@@ -98,15 +101,15 @@ function (_PureComponent) {
       var _this$props = this.props,
           location = _this$props.location,
           routes = _this$props.routes;
-      return _react.default.createElement(_reactRouterDom.Switch, null, routes.map(function (route, i) {
-        return _react.default.createElement(_reactRouterDom.Route, {
+      return _react["default"].createElement(_reactRouterDom.Switch, null, routes.map(function (route, i) {
+        return _react["default"].createElement(_reactRouterDom.Route, {
           key: "route--".concat(i),
           path: route.path,
           exact: route.exact,
           strict: route.strict,
           location: previousLocation || location,
           render: function render(props) {
-            return _react.default.createElement(route.component, (0, _objectSpread2.default)({}, initialProps, {
+            return _react["default"].createElement(route.component, (0, _objectSpread2["default"])({}, initialProps, {
               history: props.history,
               location: previousLocation || location,
               match: props.match

@@ -5,7 +5,7 @@ import { ensureReady, Nut } from "@geetemp/nut";
 import routes from "./routes";
 import "./client.css";
 
-ensureReady(routes).then(initialProps =>
+ensureReady().then(initialProps =>
   hydrate(
     <BrowserRouter>
       <Nut initialProps={initialProps} routes={routes} />

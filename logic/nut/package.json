@@ -7,6 +7,7 @@
     "nut.js",
     "document.js",
     "render.js",
+    "loadable.js",
     "loadInitialProps.js"
   ],
   "license": "MIT",
@@ -33,5 +34,8 @@
   "description": "",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "react-loadable": "^5.5.0"
   }
 }
