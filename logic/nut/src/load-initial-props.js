@@ -24,10 +24,15 @@ export async function loadInitialProps (routes, path, ctx) {
       const component = route.component;
       initialPropsPromises.push (
         component.load
-          ? component.load ().then (component => {
-              const {getInitialProps} = resolve (component);
-              return getInitialProps ? getInitialProps ({match, ...ctx}) : {};
-            })
+          ? component
+              .load ()
+              .then (component => {
+                const {getInitialProps} = resolve (component);
+                return getInitialProps ? getInitialProps ({match, ...ctx}) : {};
+              })
+              .catch (e => {
+                console.error (e);
+              })
           : component.getInitialProps ({match, ...ctx})
       );
     }

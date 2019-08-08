@@ -33,8 +33,6 @@ var utils = _interopRequireWildcard(require("./utils"));
 
 var _loadInitialProps = require("./load-initial-props");
 
-var _loadable = require("./loadable");
-
 /**
  * rendering function on server
  *
@@ -51,13 +49,13 @@ function _render() {
   _render = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee2(_ref) {
-    var req, res, routes, document, assets, dynamicAssets, customRenderer, rest, Doc, context, _ref2, match, initialProps, renderPage, reactRouterMatch, _ref4, html, docProps, doc;
+    var req, res, routes, document, assets, customRenderer, rest, Doc, context, _ref2, match, initialProps, renderPage, reactRouterMatch, _ref4, html, docProps, doc;
 
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            req = _ref.req, res = _ref.res, routes = _ref.routes, document = _ref.document, assets = _ref.assets, dynamicAssets = _ref.dynamicAssets, customRenderer = _ref.customRenderer, rest = (0, _objectWithoutProperties2["default"])(_ref, ["req", "res", "routes", "document", "assets", "dynamicAssets", "customRenderer"]);
+            req = _ref.req, res = _ref.res, routes = _ref.routes, document = _ref.document, assets = _ref.assets, customRenderer = _ref.customRenderer, rest = (0, _objectWithoutProperties2["default"])(_ref, ["req", "res", "routes", "document", "assets", "customRenderer"]);
             Doc = document || _defaultDocument.DefaultDocument;
             context = {};
             _context2.next = 5;
@@ -80,7 +78,7 @@ function _render() {
             return _context2.abrupt("return");
 
           case 11:
-            if (!(match.path === '**')) {
+            if (!(match.path === "**")) {
               _context2.next = 15;
               break;
             }
@@ -106,7 +104,6 @@ function _render() {
               /*#__PURE__*/
               _regenerator["default"].mark(function _callee() {
                 var fn,
-                    dynamicModules,
                     defaultRenderer,
                     renderer,
                     asyncOrSyncRender,
@@ -118,8 +115,8 @@ function _render() {
                     switch (_context.prev = _context.next) {
                       case 0:
                         fn = _args.length > 0 && _args[0] !== undefined ? _args[0] : modPage;
-                        dynamicModules = []; // By default, we keep ReactDOMServer synchronous renderToString function
 
+                        // By default, we keep ReactDOMServer synchronous renderToString function
                         defaultRenderer = function defaultRenderer(element) {
                           return {
                             html: _server["default"].renderToString(element)
@@ -127,44 +124,38 @@ function _render() {
                         };
 
                         renderer = customRenderer || defaultRenderer;
-                        asyncOrSyncRender = renderer(_react["default"].createElement(_loadable.Loadable.Capture, {
-                          report: function report(moduleName) {
-                            return dynamicModules.push(moduleName);
-                          }
-                        }, _react["default"].createElement(_reactRouterDom.StaticRouter, {
+                        asyncOrSyncRender = renderer(_react["default"].createElement(_reactRouterDom.StaticRouter, {
                           location: req.url,
                           context: context
                         }, fn(_nut.Nut)({
                           routes: routes,
                           initialProps: initialProps
-                        }))));
+                        })));
 
                         if (!utils.isPromise(asyncOrSyncRender)) {
-                          _context.next = 11;
+                          _context.next = 10;
                           break;
                         }
 
-                        _context.next = 8;
+                        _context.next = 7;
                         return asyncOrSyncRender;
 
-                      case 8:
+                      case 7:
                         _context.t0 = _context.sent;
-                        _context.next = 12;
+                        _context.next = 11;
                         break;
 
-                      case 11:
+                      case 10:
                         _context.t0 = asyncOrSyncRender;
 
-                      case 12:
+                      case 11:
                         renderedContent = _context.t0;
                         helmet = _reactHelmet["default"].renderStatic();
                         return _context.abrupt("return", (0, _objectSpread2["default"])({
                           helmet: helmet
-                        }, renderedContent, {
-                          dynamicModules: dynamicModules
-                        }));
+                        }, renderedContent));
 
-                      case 15:
+                      case 14:
                       case "end":
                         return _context.stop();
                     }
@@ -183,7 +174,6 @@ function _render() {
               req: req,
               res: res,
               assets: assets,
-              dynamicAssets: dynamicAssets,
               renderPage: renderPage,
               initialProps: initialProps,
               match: reactRouterMatch,
@@ -195,7 +185,7 @@ function _render() {
             html = _ref4.html;
             docProps = (0, _objectWithoutProperties2["default"])(_ref4, ["html"]);
             doc = _server["default"].renderToStaticMarkup(_react["default"].createElement(Doc, docProps));
-            return _context2.abrupt("return", "<!doctype html>".concat(doc.replace('DO_NOT_DELETE_THIS_YOU_WILL_BREAK_YOUR_APP', html)));
+            return _context2.abrupt("return", "<!doctype html>".concat(doc.replace("DO_NOT_DELETE_THIS_YOU_WILL_BREAK_YOUR_APP", html)));
 
           case 27:
           case "end":

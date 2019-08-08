@@ -52,6 +52,8 @@ function _loadInitialProps() {
                   return getInitialProps ? getInitialProps((0, _objectSpread2["default"])({
                     match: match
                   }, ctx)) : {};
+                })["catch"](function (e) {
+                  console.error(e);
                 }) : component.getInitialProps((0, _objectSpread2["default"])({
                   match: match
                 }, ctx)));
