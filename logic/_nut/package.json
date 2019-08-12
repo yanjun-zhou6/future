@@ -1,5 +1,5 @@
 {
-  "name": "@geetemp/nut",
+  "name": "@geetemp/_nut",
   "version": "1.0.4",
   "main": "build/index.js",
   "files": [

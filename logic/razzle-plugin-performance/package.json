@@ -1,0 +1,13 @@
+{
+  "name": "@geetemp/razzle-plugin-performance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "image-webpack-loader": "^5.0.0",
+    "moment-locales-webpack-plugin": "^1.0.7",
+    "webpack-ant-icon-loader": "^1.0.8",
+    "webpack-bundle-analyzer": "^3.4.1"
+  }
+}
