@@ -1,12 +1,12 @@
 const nodeExternals = require ('webpack-node-externals');
 const ReactLoadablePlugin = require ('react-loadable/webpack')
   .ReactLoadablePlugin;
+const performancePlugin = require ('@geetemp/razzle-plugin-performance');
 const paths = require ('./config/paths');
 const path = require ('path');
-const BundleAnalyzerPlugin = require ('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 
 module.exports = {
+  plugins: [performancePlugin],
   modify: (config, {target, dev}, webpack) => {
     // config.resolve.alias = {
     //   ...config.resolve.alias,
@@ -19,15 +19,6 @@ module.exports = {
       config.plugins.push (
         new ReactLoadablePlugin ({
           filename: paths.appDynamicManifest,
-        })
-      );
-    }
-
-    if (!dev) {
-      config.plugins.push (
-        new BundleAnalyzerPlugin ({
-          analyzerMode: 'disabled',
-          generateStatsFile: true,
         })
       );
     }

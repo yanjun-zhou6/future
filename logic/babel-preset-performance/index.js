@@ -30,9 +30,9 @@ module.exports = function (api, opts) {
   return (
     isEnvProduction && {
       plugins: [
-        useLodash && [require ('lodash').default],
+        useLodash && [require ('babel-plugin-lodash')],
         useRemovePropTypes && [
-          require ('transform-react-remove-prop-types').default,
+          require ('babel-plugin-transform-react-remove-prop-types'),
         ],
       ],
     }
