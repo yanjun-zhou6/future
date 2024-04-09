@@ -12,7 +12,7 @@ import { loadInitialProps } from "./load-initial-props";
  *
  * match route config by req.url and find relative page Component
  * call Component.getInitProps to get page init data, so we can render
- * page to html. render Document Compoent wrapping page's html to html
+ * page to html. render Document Component wrapping page's html to html
  * and send it to client
  */
 export async function render({
